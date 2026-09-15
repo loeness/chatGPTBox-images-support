@@ -99,9 +99,29 @@
   }
 
   .chat-content {
-    flex-grow: 1;
+    // Flex items default to min-width: auto, which lets wide Markdown content
+    // (tables, formulas, long links) force the whole panel beyond the viewport.
+    min-width: 0;
+    flex: 1 1 0;
     border: 1px solid var(--theme-border-color);
     background-color: var(--theme-color);
+  }
+
+  .gpt-inner > .gpt-header {
+    flex-wrap: wrap;
+  }
+
+  .gpt-inner > .gpt-header > .gpt-util-group:first-child {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+    flex: 1 1 180px;
+
+    select {
+      min-width: 0;
+      width: 0;
+      flex: 1 1 0;
+    }
   }
 
   .normal-button {
